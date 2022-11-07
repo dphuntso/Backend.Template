@@ -1,7 +1,7 @@
-function responseBody(status, body){
+function responseBody(status, obj){
     return {
         httpStatus: status,
-        body: body
+        body: {data: obj}
     }
 }
 
