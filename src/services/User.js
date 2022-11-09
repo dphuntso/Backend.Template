@@ -5,8 +5,10 @@ const response = require("./../util/response.js");
 function login(userInfo){
     // verify password. bcrypt, mongo
     // sign jwt, expire 1 day
-    let token = jwt.sign({userId: userInfo.id}, process.env.JWT_SECRET, "1d")
-    return response.responseBody(200, token)
+    let token = jwt.sign({userId: userInfo.id}, process.env.JWT_SECRET, { expiresIn: "1d"});
+    console.log(token)
+    console.log("hello token")
+    return response.responseBody(200, {"token": token})
 }
 
 function info(userId){
@@ -16,5 +18,6 @@ function info(userId){
 }
 
 module.exports = {
-    login
+    login,
+    info
 }
